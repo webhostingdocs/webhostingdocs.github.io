@@ -1,0 +1,34 @@
+# ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+url: http://webhostingdocs.com
+title: Web Hosting Docs
+email: alan@webhostingdocs.com
+author: Alan Bowman
+description: > # "Write an awesome description for your new site here. 
+  Technical Writer for Web Hosting companies 
+copyright: 'Copyright &copy; 2017 Alan Bowman. All Rights Reserved.'
+# credits: 'Credits: Landing Page is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com/">Start Bootstrap</a>.'
+
+# ----------------------- #
+#    Jekyll & Plugins     #
+# ----------------------- #
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# ----------------------- #
+#   3rd Party Settings    #
+# ----------------------- #
+
+social:
+  - title: email
+    url: mailto:alan@webhostingdocs.com
+  - title: twitter
+    url: https://twitter.com/webhostingdocs
+  - title: github
+    url: https://github.com/webhostingdocs
+  - title: linkedin
+    url: https://linkedin.com/in/ralanbowman
