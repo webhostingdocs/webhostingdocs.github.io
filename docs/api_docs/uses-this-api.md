@@ -1,8 +1,8 @@
 ---
+ layout: docs
+category: Services
+# toc: false
 title: Documentation for the Uses This API
-# sidebar: second_sidebar
-toc: false
-# permalink: uses-this-api.html
 ---
 
 [The Setup](https://usesthis.com "The Setup/Uses This") is a website with the tagline “What do people use to get stuff done?” The site publishes interviews with people mainly from the tech/startup/artist crowd, asking what equipment and software and other gear they use to do their jobs or pursue their hobbies. 
