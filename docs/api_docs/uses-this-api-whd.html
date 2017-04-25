@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Technical Writer for Web Hosting companies 
-">
+    <meta name="description" content="Technical Writer for Web Hosting companies ">
     <meta name="author" content="Alan Bowman">
 
     <title>API Documentation Example</title>
@@ -21,6 +20,14 @@
     <!-- Custom Fonts -->
     <!-- <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
 
+    <style type="text/css">
+table, th, td { border: 1px solid black; }
+table { border-collapse: collapse; }
+th, td { padding: 5px; text-align: left; }
+tr:nth-child(even) {background-color: #f2f2f2}
+th { background-color: #c0c0c0; color: black; }
+    </style>
+    
     <link href="font-awesome-4.1.0/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -73,7 +80,7 @@
 		<div class="container">
 
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-lg-10">
 						<hr class="intro-divider">
 					</div>
 				</div>
@@ -86,6 +93,12 @@
 	<!-- /.intro-header -->
 </section>
 <br />
+
+		    <!-- About Section -->
+        <section id="about" class="container content-section <!--text-center-->">
+        <div class="row">
+            <div class="col-lg-12 col-lg-offset-0">
+
 <p><a href="https://usesthis.com" title="The Setup/Uses This">The Setup</a> is a website with the tagline “What do people use to get stuff done?” The site publishes interviews with people mainly from the tech/startup/artist crowd, asking what equipment and software and other gear they use to do their jobs or pursue their hobbies.</p>
 
 <p>The website has a simple RESTful API with requests and responses in JSON. There is <a href="https://usesthis.com/api/" title="Uses This API">minimal documentation</a> for the API, so I updated the documentation on my own as an exercise in creating simple but useful documentation for a RESTful API.</p>
@@ -933,7 +946,8 @@
     </tr>
   </tbody>
 </table>
-
+<hr />
+<br />
 		<section id="contact">
 	<div class="banner">
 		<div class="container">
