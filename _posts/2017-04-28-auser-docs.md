@@ -10,3 +10,4 @@ I can also update any existing documentation, making sure it matches your curren
 
 The documentation I create is clear, concise, and consistent, and focuses on explaining the task, not the technology. I can tailor the documentation I create for any level of user, from a brand new user totally unfamiliar with web hosting all the way up to the most experienced developers and system administrators.   
 
+Examples of the type of documentation I can create are here: [basic-level FTP user guide](url to doc), [mid-level Confluence installation guide](../docs/conf_doc/confluence_install.html), and [high-level API reference](../docs/api_docs/uses-this-api-whd.html). 

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Technical Writer for Web Hosting companies ">
+    <meta name="author" content="Alan Bowman">
+
+    <title>Confluence Install Guide</title>
+
+    <!-- Bootstrap Core CSS -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+
+<style type="text/css">
+table, th, td { border: 1px solid grey; }
+table { border-collapse: collapse; }
+th, td { padding: 5px; text-align: left; }
+tr:nth-child(even) {background-color: #f2f2f2}
+th { background-color: #c0c0c0; color: black; }
+p { font-weight: 500;}
+    </style>
+    
+    <link href="font-awesome-4.1.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#home">Web Hosting Docs</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">  
+            	<li>
+                    <a class="page-scroll" href="#about">How I Can Help</a>
+                </li>            
+                <li>
+                    <a class="page-scroll" href="#services">Work Examples</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<section id="home">
+<!-- Header -->
+	<div class="intro-header">
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-10">
+						<hr class="intro-divider">
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- /.container -->
+
+	</div>
+	<!-- /.intro-header -->
+</section>
+<br />
+
+		    <!-- About Section -->
+        <section id="about" class="container content-section <!--text-center-->">
+        <div class="row">
+            <div class="col-lg-12 col-lg-offset-0">
+  <h1 id="installing-confluence">Confluence Install Guide</h1>
+
+  <h3 id="overview">Overview</h3>
+
+  <p>This user guide will explain how to install Atlassian Confluence Enterprise Wiki software on your Virtual Server.</p>
+
+  <p>This guide assumes that you are able to connect to the command line of the server using an SSH client, work as the <em>root</em> user, and are able to navigate the Linux file system, install and configure software, and edit files using a text editor.</p>
+
+  <p><strong>NOTE</strong> - this install guide uses the <a href="http://www.vim.org/" title="Vim">Vim</a> text editor for all file configuration examples. If you are unfamiliar with Vim, the end of this document has a <a href="#addendum---a-very-short-vim-tutorial">quick tutorial on using Vim</a> that should cover the basics of using the editor.</p>
+
+  <h3 id="prerequisites">Prerequisites</h3>
+
+  <p>Before the installation process can begin, you will need the following:</p>
+
+  <ul>
+    <li>A Virtual Server built with the latest version of CentOS Linux - choose a minimal server install if possible</li>
+
+    <li>1.5 GB of RAM at a minimum</li>
+
+    <li>25 GB of disk space at a minimum</li>
+
+    <li>1 public IP address at a minimum</li>
+  </ul>
+
+  <p>You will also need:</p>
+
+  <ul>
+    <li>A My Atlassian account - <a href="https://my.atlassian.com/">https://my.atlassian.com/</a><br></li>
+
+    <li>A valid Confluence license for the correct number of users (purchased from your My Atlassian account)</li>
+  </ul>
+
+  <p><a href="#server-preparation">Server Preparation</a><br>
+  &nbsp; &nbsp; <a href="#additional-software-installation">Additional Software Installation</a><br>
+  &nbsp; &nbsp; <a href="#set-the-mysql-root-password">Set the MySQL root password</a></p>
+
+  <p><a href="#installing-confluence-1">Installing Confluence</a><br>
+  &nbsp; &nbsp; <a href="#download-the-confluence-installer-from-atlassian">Download the Confluence installer from Atlassian</a><br>
+  &nbsp; &nbsp; <a href="#set-the-installer-as-an-executable">Set the installer as an executable</a><br>
+  &nbsp; &nbsp; <a href="#run-the-installer---follow-the-prompts">Run the installer - follow the prompts</a><br>
+  &nbsp; &nbsp; <a href="#set-up-the-mysql-database-for-confluence">Set up the MySQL database for Confluence</a><br>
+  &nbsp; &nbsp; <a href="#move-to-the-browser-based-installer-this-is-where-you-install-the-license">Move to the browser-based installer (this is where you install the license)</a><br>
+  &nbsp; &nbsp; <a href="#enjoy-using-confluence">Enjoy using Confluence</a></p>
+
+  <p><a href="#addendum---a-very-short-vim-tutorial">Addendum: A Very Short Vim Tutorial</a></p>
+  <hr>
+
+  <h2 id="server-preparation">Server Preparation</h2>
+
+  <p>Confluence is a Java application that uses the Tomcat application server to serve dynamic content. The Confluence install binary contains a JVM (Java) and Tomcat, so <strong>DO NOT</strong> install those before installing Confluence. Having Java and Tomcat installed before installing Confluence will cause port conflicts and various other problems that can be difficult to troubleshoot.</p>
+
+  <h3 id="additional-software-installation">Additional Software Installation</h3>
+
+  <p>Once the server has been provisioned and built, you will need to install some additional software before you can install Confluence. Software is installed from the command line as the <em>root</em> user, using the <em>yum</em> package manager. You will need to install the following:</p>
+
+  <ul>
+    <li>Sendmail (a mail server)</li>
+
+    <li><em>wget</em> (used to download Confluence)</li>
+
+    <li>CentOS Development tools group (general tools)</li>
+
+    <li>MySQL database server</li>
+  </ul>
+
+  <p>You will need to connect to the server using the Secure SHell (SSH), which encrypts the connection between your local computer and the server. Once you are connected via SSH you will be at the command line of server.</p>
+
+  <p>The commands used are:</p>
+
+  <ul>
+    <li><strong><code>yum update -y</code></strong> - this updates the <em>yum</em> application so that it is looking at the latest version of the repositories</li>
+
+    <li><strong><code>yum install -y sendmail sendmail-cf sendmail-doc</code></strong> - <em>sendmail</em> is the mail server Confluence will use to send announcements</li>
+
+    <li><strong><code>yum install -y wget</code></strong> - <em>wget</em> is the application that will be used to download Confluence</li>
+
+    <li><strong><code>yum groupinstall -y "Development tools"</code></strong> - the Dev tools are a suite of applications needed to install and configure software</li>
+
+    <li><strong><code>yum install -y mysql-server</code></strong> - MySQL is the database that will be used by Confluence</li>
+  </ul>
+
+  <p>At the command prompt, you will type in each command one at a time and hit Enter (or Return). Let each command complete - some of them will take several minutes to finish. You will taken back to the command prompt once the command completes.</p>
+
+  <h3 id="set-the-mysql-root-password">Set the MySQL root password</h3>
+
+  <p>Once all the additional software is installed, you will need to set a MySQL <em>root</em> password. <strong>NOTE</strong> - this is not the same as the <em>root</em> password for the system super-user! This is a password for the MySQL database <em>root</em> user.</p>
+
+  <p>This is done before installing Confluence so that the database server is secure during the time it takes to install Confluence and the time it takes to actually set up the database itself.</p>
+
+  <p>Change directories to the <em>/root</em> directory, and create a file called <strong><em>.my.cnf</em></strong>. Note the dot (.) at the beginning of the file name. Create the file using the <strong><code>touch</code></strong> command, and then edit it using a text editor (vim in this example).</p>
+  <pre class="sh">
+<code>[root@example ~]# cd /root
+[root@example ~]# touch .my.cnf
+[root@example ~]# vim .my.cnf</code>
+</pre>
+
+  <p>Add this info to the .my.cnf file, and save and exit.</p>
+  <pre class="sh">
+<code>[client]
+password=use_a_strong_passwd</code>
+</pre>
+
+  <p>Choose a strong password, preferably using a password generator. Several are available online, such as the <a href="https://strongpasswordgenerator.com/" title="Strong Password Generator">Strong Password Generator</a>. If the MySQL <em>root</em> password is easy to guess, a hacker could compromise your database and access all the information in it.</p>
+
+  <p>This ends the server preparation. The next step is to install Confluence.</p>
+  <hr>
+
+  <h2 id="installing-confluence-1">Installing Confluence</h2>
+
+  <p>The first part of the Confluence install is done from the command line of the server, as the <em>root</em> user. Once that is complete, you will move to a browser to finish the last part of the configuration. After that you can begin using Confluence.</p>
+
+  <p>The steps to install Confluence are:</p>
+
+  <ol style="list-style-type: decimal">
+    <li>Download the Confluence installer from Atlassian</li>
+
+    <li>Set the installer as an executable</li>
+
+    <li>Run the installer - follow the prompts</li>
+
+    <li>Set up the MySQL database for Confluence</li>
+
+    <li>Move to the browser-based installer (this is where you install the license)</li>
+
+    <li>Begin using Confluence</li>
+  </ol>
+
+  <h3 id="download-the-confluence-installer-from-atlassian">Download the Confluence installer from Atlassian</h3>
+
+  <p>The Confluence installers are here: <a href="https://www.atlassian.com/software/confluence/download" title="Confluence Installers">Confluence installers</a>. The page will default to the OS of the computer you use, so make sure to select <strong>Linux 64 Bit</strong> from the drop down menu. This will default to the most current version of the installer.</p>
+
+  <p>However, instead of downloading the software from this page, right-click on the <strong>Download</strong> button, and select the option that allows you to <em>Copy Link Address</em> (the wording may vary depending on your browser). You do not need to save or open the link, just copy the link address.</p>
+
+  <p>Connect to the server using SSH, and as the <em>root</em> user change directories to the <em>/tmp</em> directory (note the leading slash). Then use the <strong><code>wget</code></strong> command to download the installer. You should be able to type in <strong><code>wget</code></strong>, a space, and then paste the link address into the command prompt.</p>
+  <pre class="sh">
+<code>[root@example ~]# cd /tmp
+[root@example ~]# wget https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-X.X-x64.bin</code>
+</pre>
+
+  <p>This will download the Confluence installer to your server. Depending on your connection speed, network traffic, etc., this may take a few minutes. When the download is complete you will be returned to the command prompt.</p>
+
+  <h3 id="set-the-installer-as-an-executable">Set the installer as an executable</h3>
+
+  <p>By default, the Confluence installer is not executable, meaning you cannot run the installer program. This is by design, and done for security reasons. You will need to set the installer to executable with the <strong><code>chmod +x atlassian-confluence-X.X-x64.bin</code></strong> command. Remember to substitute <code>X.X</code> with the version number of the installer you downloaded.</p>
+  <pre class="sh">
+<code>[root@example ~]# chmod +x atlassian-confluence-X.X-x64.bin</code>
+</pre>
+
+  <h3 id="run-the-installer---follow-the-prompts">Run the installer - follow the prompts</h3>
+
+  <p>Once the installer has been set to executable, you can run the installer program, and follow the prompts to install Confluence. Generally speaking you can just accept the defaults for each choice.</p>
+
+  <p>Start the install process with the <strong><code>./atlassian-confluence-X.X-x64.bin</code></strong> command. The command is: <code>dot slash atlassian-confluence-X.X-x64.bin</code> (all together, no spaces). After you have entered that command, press ENTER (or RETURN).</p>
+
+  <p>This is an example of what you will see during the install process. What's inside the angle brackets is what you'll type at the prompt whenever the system asks you for an action. For example, &lt; o, Enter &gt; means to press the letter o and then press Enter.</p>
+  <pre class="sh">
+<code>[root@example ~]# ./atlassian-confluence-X.X-x64.bin
+Unpacking JRE ...
+Starting Installer ...
+
+This will install Confluence X.X on your computer.
+OK [o, Enter], Cancel [c]
+&lt; o, Enter &gt;
+
+Choose the appropriate installation or upgrade option.
+Please choose one of the following:
+Express Install (uses default settings) [1], Custom Install (recommended for advanced users) [2, Enter], Upgrade an existing Confluence installation [3]
+&lt; 2, Enter &gt;
+
+Where should Confluence X.X be installed?
+[/opt/atlassian/confluence]
+&lt; Enter &gt;
+
+Default location for Confluence data
+[/var/atlassian/application-data/confluence]
+&lt; Enter &gt;
+
+Configure which ports Confluence will use.
+Confluence requires two TCP ports that are not being used by any other
+applications on this machine. The HTTP port is where you will access
+Confluence through your browser. The Control port is used to Startup and
+Shutdown Confluence.
+Use default ports (HTTP: 8090, Control: 8000) - Recommended [1, Enter], Set custom value for HTTP and Control ports [2]
+&lt; 1, Enter &gt;
+
+Confluence can be run in the background.
+You may choose to run Confluence as a service, which means it will start
+automatically whenever the computer restarts.
+Install Confluence as Service?
+Yes [y, Enter], No [n]
+&lt; y, Enter &gt;
+
+Extracting files ...
+
+
+
+Please wait a few moments while Confluence starts up.
+Launching Confluence ...
+Installation of Confluence X.X is complete
+Your installation of Confluence X.X is now ready and can be accessed via your browser.
+Confluence X.X can be accessed at http://localhost:8090
+Finishing installation ...
+[root@example tmp]#</code>
+</pre>
+
+  <p>After the install completes, you will need to move on to the MySQL database configuration before finishing the rest of the Confluence setup from the browser.</p>
+
+  <h3 id="set-up-the-mysql-database-for-confluence">Set up the MySQL database for Confluence</h3>
+
+  <p>In this section you will start the MySQL database server, secure it, and create the database that Confluence will use. You will also add some settings to the file that controls some of the variables that MySQL uses.</p>
+
+  <p>You will need the MySQL <em>root</em> password that you set in the <a href="#set-the-mysql-root-password">Set the MySQL root password</a> section, and you will also need to create a database password for the Confluence database. You will want that password to be as secure as the MySQL <em>root</em> password so you will again want to use a <a href="https://strongpasswordgenerator.com/" title="Strong Password Generator">Strong Password Generator</a> for this.</p>
+
+  <p>Start the MySQL database server with the <strong><code>service mysqld start</code></strong> command. Note the <strong>d</strong> at the end - <strong>mysqld</strong>.</p>
+  <pre class="sh">
+<code>[root@example ~]# service mysqld start</code>
+</pre>
+
+  <p>If this is the first time that the MySQL database server has run, there will be a lot of output generated on the screen. Wait until you are returned to the command prompt, and then run the following command to secure the MySQL server: <strong><code>/usr/bin/mysql_secure_installation</code></strong></p>
+  <pre class="sh">
+<code>[root@example ~]# /usr/bin/mysql_secure_installation</code>
+</pre>
+
+  <p>You will be asked for the current MySQL <em>root</em> password - enter it when prompted. If you're asked to set the MySQL <em>root</em> password again, select <strong>n</strong> for no. As part of the process to secure the database, you will see the following prompts:</p>
+
+  <ul>
+    <li><strong>Remove anonymous users?</strong> - select <strong>y</strong></li>
+
+    <li><strong>Disallow root login remotely?</strong> - select <strong>y</strong></li>
+
+    <li><strong>Remove test database and access to it?</strong> - select <strong>y</strong></li>
+
+    <li><strong>Reload privilege tables now?</strong> - select <strong>y</strong></li>
+  </ul>
+
+  <p>This will drop you back to the command prompt once the tables are reloaded.</p>
+
+  <p>The next step is to create the actual database that Confluence will use. This involves creating the database, the database user, and the database user password. As always, make sure to use a secure password for the database user. All of this is done from the command prompt of the MySQL server.</p>
+
+  <p>The commands you will need to use are as follows. An example of how this will look is also below. By convention, MySQL commands are always shown in UPPERCASE. However, you do not actually need to use uppercase letters, the commands are not case-sensitive. Also, all MySQL commands end with a semi-colon (;).</p>
+
+  <ul>
+    <li><strong><code>mysql -u root -p</code></strong> - this logs you in to the MySQL database server as the MySQL <em>root</em> user. You will be prompted for the MySQL <em>root</em> password.</li>
+
+    <li><strong><code>CREATE DATABASE confluence CHARACTER SET utf8 COLLATE utf8_bin;</code></strong> - this creates the actual database, called <em>confluence</em></li>
+
+    <li><strong><code>GRANT ALL PRIVILEGES ON confluence.* TO 'confluence_db_user'@'localhost' IDENTIFIED BY 'secure_password';</code></strong> - this creates the database user and sets the password for that user. Choose a database user name that you will remember and as always use a secure password.</li>
+  </ul>
+  <pre class="sh">
+<code>[root@example ~]# mysql -u root -p
+Enter password:
+
+Welcome to the MySQL monitor. Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 5.0.95 Source distribution
+
+Copyright (c) 2000, 2011, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt; CREATE DATABASE confluence CHARACTER SET utf8 COLLATE utf8_bin;
+mysql&gt; GRANT ALL PRIVILEGES ON confluence.* TO 'confluence_db_user'@'localhost' IDENTIFIED BY 'secure_password';
+mysql&gt; quit;
+[root@example ~]#</code>
+</pre>
+
+  <p>After you have created the database and database user / password, you will need to edit the file that controls some settings for MySQL. The file is located at <em>/etc/my.cnf</em>. Note the dot between my and cnf.</p>
+  <pre class="sh">
+<code>[root@example ~]# cd /etc
+[root@example ~]# vim my.cnf</code>
+</pre>
+
+  <p>The <em>my.cnf</em> file is divided into sections. Add the following to the <code>[mysqld]</code> section:</p>
+  <pre>
+<code>character-set-server=utf8
+collation-server=utf8_bin
+default-storage-engine=INNODB
+max_allowed_packet=32M</code>
+</pre>
+
+  <p>Once you have made these changes, save and exit the file, and restart the MySQL database server with the <strong><em><code>service mysqld restart</code></em></strong> command.</p>
+  <pre class="sh">
+<code>[root@example ~]# service mysqld restart</code>
+</pre>
+
+  <p>This ends the command line install part of Confluence. The rest of the install process takes place in the browser.</p>
+
+  <h3 id="move-to-the-browser-based-installer-this-is-where-you-install-the-license">Move to the browser-based installer (this is where you install the license)</h3>
+
+  <p>The last part of the Confluence install takes place in the browser. Open a browser, and go to <strong><em>http://IP_ADDRESS:8090</em></strong>, where IP_ADDRESS is the IP address of your server. If the browser will not open the page, the connection is usually being blocked by some kind of firewall application.</p>
+
+  <p>From the first page that opens, you will need to copy the <strong>Server ID</strong>, which is just above the box where you enter the License Key. Take the Server ID, and go to your <strong>My Atlassian</strong> account. There will be a place there to generate the License Key by entering the Server ID.</p>
+
+  <p>The final steps to finalize the installation are as follows:</p>
+
+  <ol style="list-style-type: decimal">
+    <li>Choose a <strong>Production Installation</strong> - this allows you to use the MySQL database</li>
+
+    <li>When prompted, choose MySQL in the <strong>Choose Database</strong> screen</li>
+
+    <li>You will need to choose the <strong>JDBC</strong> option to connect the database to Confluence</li>
+
+    <li>You will need to enter the Confluence database user and password when prompted</li>
+  </ol>
+
+  <p>This takes a few minutes to run. If there is a problem, it will error out almost immediately.</p>
+
+  <p>This should complete the Confluence installation.</p>
+  <hr>
+
+  <h2 id="addendum---a-very-short-vim-tutorial">Addendum - A Very Short Vim Tutorial</h2>
+
+  <p>Vim is a very complex and powerful text editor. However, you only need to use a very small set of commands in order to edit the files referenced in this install guide. Basically, you need to know how to:</p>
+
+  <ol style="list-style-type: decimal">
+    <li>Open a file for editing</li>
+
+    <li>Move to a location in the file</li>
+
+    <li>Add text to the file</li>
+
+    <li>Save and exit the file</li>
+  </ol>
+
+  <h3 id="open-a-file-for-editing">1. Open a file for editing</h3>
+
+  <p>To open a file for editing, use the <strong><code>vim name_of_file</code></strong> command from the command prompt. For example, to open the <strong><code>.my.cnf</code></strong> file:</p>
+  <pre class="sh">
+<code>vim .my.cnf</code>
+</pre>
+
+  <h3 id="move-to-a-location-in-the-file">2. Move to a location in the file</h3>
+
+  <p>If the file you're editing has text in it already, you can navigate to the location where you need to enter your text using the arrow keys. However, Vim is a modal editor, and you have to be in command mode to move around. So before you use the arrow keys, hit the <strong><code>Esc</code></strong> (Escape) key twice. The <code>Esc</code> key will always take you out of insert mode and back to command mode. After hitting the <code>Esc</code> key twice, use the up/down/left/right arrow keys as needed to move you to your desired location.</p>
+
+  <h3 id="add-text-to-the-file">3. Add text to the file</h3>
+
+  <p>Once the cursor is where you want it to be, you need to enter insert mode to add your text. Press the lower-case <strong>i</strong> key. This will allow you to type in the text you need to add. Using the Return or Enter key will create a new line if needed.</p>
+
+  <p><strong>TIP</strong> - if you make a mistake, hit the <code>Esc</code> key twice, and then use the lower-case <strong>x</strong> key to erase what you've typed, and then use the <strong>i</strong> key again to get back to insert mode.</p>
+
+  <h3 id="save-and-exit-the-file">4. Save and exit the file</h3>
+
+  <p>Once you've added your text or made your changes to the file you can save and exit. Hit the <code>Esc</code> key twice to get back to command mode, and then type in <strong><code>:wq</code></strong>. That is a <code>colon w q</code> all together with no spaces. This will save and exit the file, and get you back to the command prompt.</p>
+</body>
+
+		<section id="contact">
+	<div class="banner">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-3">
+					<h2>Contact Me:</h2>
+				</div>
+				<div class="col-lg-5">
+					<ul class="list-inline banner-social-buttons">
+						
+						<li>
+							<a href="mailto:alan@webhostingdocs.com" class="btn btn-default btn-lg"><i class="fa fa-email fa-fw"></i> <span class="network-name">email</span></a>
+						</li>
+						
+						<li>
+              <!--	<a href="https://twitter.com/webhostingdocs" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">twitter</span></a> -->
+						</li>
+						
+						<li>
+							<a href="https://github.com/webhostingdocs/webhostingdocs.github.io" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">github</span></a>
+						</li>
+						
+						<li>
+							<a href="https://linkedin.com/in/ralanbowman" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">linkedin</span></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		<!-- /.container -->
+
+	</div>
+</section>
+<!-- /.banner -->
+
+		<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="list-inline">
+                    <li>
+                        <a href="http://localhost:4000#home">Home</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="http://localhost:4000#about">How I Can Help</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="http://localhost:4000#services">Work Examples</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted small">Copyright &copy; 2017 Alan Bowman. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+    </div>
+</footer>
+
+		<!-- jQuery Version 1.11.0 -->
+<script src="../../js/jquery-1.11.0.js"></script>
+
+<!-- Plugin JavaScript -->
+    <script src="../../js/jquery.easing.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../js/landing-page.js"></script>
+
+	</body>
+</html>
+</html>

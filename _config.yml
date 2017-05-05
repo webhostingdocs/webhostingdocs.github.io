@@ -26,8 +26,8 @@ permalink: pretty
 social:
   - title: email
     url: mailto:alan@webhostingdocs.com
-  - title: twitter
-    url: https://twitter.com/webhostingdocs
+    #  - title: twitter
+    #    url: https://twitter.com/webhostingdocs
   - title: github
     url: https://github.com/webhostingdocs/webhostingdocs.github.io
   - title: linkedin
