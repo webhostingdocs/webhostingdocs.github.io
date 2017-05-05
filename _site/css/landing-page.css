@@ -166,3 +166,18 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+/* .anchor {
+  position: top;
+  padding-top: 55px;
+} 
+*/ 
+
+.offset:before {
+  display: block;
+  content: " ";
+  height: 55px;
+  margin-top: -55px;
+  visibility: hidden;
+}
+/* added the above to set the heading below the header */

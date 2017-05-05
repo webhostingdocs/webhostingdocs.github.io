@@ -53,16 +53,16 @@ p { font-weight: 500;}
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="#home">Web Hosting Docs</a>
+            <a class="navbar-brand page-scroll" href="http://webhostingdocs.github.io#home">Web Hosting Docs</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">  
             	<li>
-                    <a class="page-scroll" href="#about">How I Can Help</a>
+                    <a class="page-scroll" href="http://webhostingdocs.github.io#about">How I Can Help</a>
                 </li>            
                 <li>
-                    <a class="page-scroll" href="#services">Work Examples</a>
+                    <a class="page-scroll" href="http://webhostingdocs.github.io#services">Available Services</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="#contact">Contact</a>
@@ -101,7 +101,7 @@ p { font-weight: 500;}
             <div class="col-lg-12 col-lg-offset-0">
   <h1 id="installing-confluence">Confluence Install Guide</h1>
 
-  <h3 id="overview">Overview</h3>
+  <h3 class="offset" id="overview">Overview</h3>
 
   <p>This user guide will explain how to install Atlassian Confluence Enterprise Wiki software on your Virtual Server.</p>
 
@@ -109,7 +109,7 @@ p { font-weight: 500;}
 
   <p><strong>NOTE</strong> - this install guide uses the <a href="http://www.vim.org/" title="Vim">Vim</a> text editor for all file configuration examples. If you are unfamiliar with Vim, the end of this document has a <a href="#addendum---a-very-short-vim-tutorial">quick tutorial on using Vim</a> that should cover the basics of using the editor.</p>
 
-  <h3 id="prerequisites">Prerequisites</h3>
+  <h3 class="offset" id="prerequisites">Prerequisites</h3>
 
   <p>Before the installation process can begin, you will need the following:</p>
 
@@ -141,16 +141,15 @@ p { font-weight: 500;}
   &nbsp; &nbsp; <a href="#run-the-installer---follow-the-prompts">Run the installer - follow the prompts</a><br>
   &nbsp; &nbsp; <a href="#set-up-the-mysql-database-for-confluence">Set up the MySQL database for Confluence</a><br>
   &nbsp; &nbsp; <a href="#move-to-the-browser-based-installer-this-is-where-you-install-the-license">Move to the browser-based installer (this is where you install the license)</a><br>
-  &nbsp; &nbsp; <a href="#enjoy-using-confluence">Enjoy using Confluence</a></p>
 
   <p><a href="#addendum---a-very-short-vim-tutorial">Addendum: A Very Short Vim Tutorial</a></p>
   <hr>
 
-  <h2 id="server-preparation">Server Preparation</h2>
+  <h2 class="offset" id="server-preparation">Server Preparation</h2>
 
   <p>Confluence is a Java application that uses the Tomcat application server to serve dynamic content. The Confluence install binary contains a JVM (Java) and Tomcat, so <strong>DO NOT</strong> install those before installing Confluence. Having Java and Tomcat installed before installing Confluence will cause port conflicts and various other problems that can be difficult to troubleshoot.</p>
 
-  <h3 id="additional-software-installation">Additional Software Installation</h3>
+  <h3 class="offset" id="additional-software-installation">Additional Software Installation</h3>
 
   <p>Once the server has been provisioned and built, you will need to install some additional software before you can install Confluence. Software is installed from the command line as the <em>root</em> user, using the <em>yum</em> package manager. You will need to install the following:</p>
 
@@ -182,7 +181,7 @@ p { font-weight: 500;}
 
   <p>At the command prompt, you will type in each command one at a time and hit Enter (or Return). Let each command complete - some of them will take several minutes to finish. You will taken back to the command prompt once the command completes.</p>
 
-  <h3 id="set-the-mysql-root-password">Set the MySQL root password</h3>
+  <h3 class="offset" id="set-the-mysql-root-password">Set the MySQL root password</h3>
 
   <p>Once all the additional software is installed, you will need to set a MySQL <em>root</em> password. <strong>NOTE</strong> - this is not the same as the <em>root</em> password for the system super-user! This is a password for the MySQL database <em>root</em> user.</p>
 
@@ -206,7 +205,7 @@ password=use_a_strong_passwd</code>
   <p>This ends the server preparation. The next step is to install Confluence.</p>
   <hr>
 
-  <h2 id="installing-confluence-1">Installing Confluence</h2>
+  <h2 class="offset" id="installing-confluence-1">Installing Confluence</h2>
 
   <p>The first part of the Confluence install is done from the command line of the server, as the <em>root</em> user. Once that is complete, you will move to a browser to finish the last part of the configuration. After that you can begin using Confluence.</p>
 
@@ -226,7 +225,7 @@ password=use_a_strong_passwd</code>
     <li>Begin using Confluence</li>
   </ol>
 
-  <h3 id="download-the-confluence-installer-from-atlassian">Download the Confluence installer from Atlassian</h3>
+  <h3 class="offset" id="download-the-confluence-installer-from-atlassian">Download the Confluence installer from Atlassian</h3>
 
   <p>The Confluence installers are here: <a href="https://www.atlassian.com/software/confluence/download" title="Confluence Installers">Confluence installers</a>. The page will default to the OS of the computer you use, so make sure to select <strong>Linux 64 Bit</strong> from the drop down menu. This will default to the most current version of the installer.</p>
 
@@ -240,14 +239,14 @@ password=use_a_strong_passwd</code>
 
   <p>This will download the Confluence installer to your server. Depending on your connection speed, network traffic, etc., this may take a few minutes. When the download is complete you will be returned to the command prompt.</p>
 
-  <h3 id="set-the-installer-as-an-executable">Set the installer as an executable</h3>
+  <h3 class="offset" id="set-the-installer-as-an-executable">Set the installer as an executable</h3>
 
   <p>By default, the Confluence installer is not executable, meaning you cannot run the installer program. This is by design, and done for security reasons. You will need to set the installer to executable with the <strong><code>chmod +x atlassian-confluence-X.X-x64.bin</code></strong> command. Remember to substitute <code>X.X</code> with the version number of the installer you downloaded.</p>
   <pre class="sh">
 <code>[root@example ~]# chmod +x atlassian-confluence-X.X-x64.bin</code>
 </pre>
 
-  <h3 id="run-the-installer---follow-the-prompts">Run the installer - follow the prompts</h3>
+  <h3 class="offset" id="run-the-installer---follow-the-prompts">Run the installer - follow the prompts</h3>
 
   <p>Once the installer has been set to executable, you can run the installer program, and follow the prompts to install Confluence. Generally speaking you can just accept the defaults for each choice.</p>
 
@@ -306,7 +305,7 @@ Finishing installation ...
 
   <p>After the install completes, you will need to move on to the MySQL database configuration before finishing the rest of the Confluence setup from the browser.</p>
 
-  <h3 id="set-up-the-mysql-database-for-confluence">Set up the MySQL database for Confluence</h3>
+  <h3 class="offset" id="set-up-the-mysql-database-for-confluence">Set up the MySQL database for Confluence</h3>
 
   <p>In this section you will start the MySQL database server, secure it, and create the database that Confluence will use. You will also add some settings to the file that controls some of the variables that MySQL uses.</p>
 
@@ -390,7 +389,7 @@ max_allowed_packet=32M</code>
 
   <p>This ends the command line install part of Confluence. The rest of the install process takes place in the browser.</p>
 
-  <h3 id="move-to-the-browser-based-installer-this-is-where-you-install-the-license">Move to the browser-based installer (this is where you install the license)</h3>
+  <h3 class="offset" id="move-to-the-browser-based-installer-this-is-where-you-install-the-license">Move to the browser-based installer (this is where you install the license)</h3>
 
   <p>The last part of the Confluence install takes place in the browser. Open a browser, and go to <strong><em>http://IP_ADDRESS:8090</em></strong>, where IP_ADDRESS is the IP address of your server. If the browser will not open the page, the connection is usually being blocked by some kind of firewall application.</p>
 
@@ -413,7 +412,7 @@ max_allowed_packet=32M</code>
   <p>This should complete the Confluence installation.</p>
   <hr>
 
-  <h2 id="addendum---a-very-short-vim-tutorial">Addendum - A Very Short Vim Tutorial</h2>
+  <h2 class="offset" id="addendum---a-very-short-vim-tutorial">Addendum - A Very Short Vim Tutorial</h2>
 
   <p>Vim is a very complex and powerful text editor. However, you only need to use a very small set of commands in order to edit the files referenced in this install guide. Basically, you need to know how to:</p>
 
@@ -427,24 +426,24 @@ max_allowed_packet=32M</code>
     <li>Save and exit the file</li>
   </ol>
 
-  <h3 id="open-a-file-for-editing">1. Open a file for editing</h3>
+  <h3 class="offset" id="open-a-file-for-editing">1. Open a file for editing</h3>
 
   <p>To open a file for editing, use the <strong><code>vim name_of_file</code></strong> command from the command prompt. For example, to open the <strong><code>.my.cnf</code></strong> file:</p>
   <pre class="sh">
 <code>vim .my.cnf</code>
 </pre>
 
-  <h3 id="move-to-a-location-in-the-file">2. Move to a location in the file</h3>
+  <h3 class="offset" id="move-to-a-location-in-the-file">2. Move to a location in the file</h3>
 
   <p>If the file you're editing has text in it already, you can navigate to the location where you need to enter your text using the arrow keys. However, Vim is a modal editor, and you have to be in command mode to move around. So before you use the arrow keys, hit the <strong><code>Esc</code></strong> (Escape) key twice. The <code>Esc</code> key will always take you out of insert mode and back to command mode. After hitting the <code>Esc</code> key twice, use the up/down/left/right arrow keys as needed to move you to your desired location.</p>
 
-  <h3 id="add-text-to-the-file">3. Add text to the file</h3>
+  <h3 class="offset" id="add-text-to-the-file">3. Add text to the file</h3>
 
   <p>Once the cursor is where you want it to be, you need to enter insert mode to add your text. Press the lower-case <strong>i</strong> key. This will allow you to type in the text you need to add. Using the Return or Enter key will create a new line if needed.</p>
 
   <p><strong>TIP</strong> - if you make a mistake, hit the <code>Esc</code> key twice, and then use the lower-case <strong>x</strong> key to erase what you've typed, and then use the <strong>i</strong> key again to get back to insert mode.</p>
 
-  <h3 id="save-and-exit-the-file">4. Save and exit the file</h3>
+  <h3 class="offset" id="save-and-exit-the-file">4. Save and exit the file</h3>
 
   <p>Once you've added your text or made your changes to the file you can save and exit. Hit the <code>Esc</code> key twice to get back to command mode, and then type in <strong><code>:wq</code></strong>. That is a <code>colon w q</code> all together with no spaces. This will save and exit the file, and get you back to the command prompt.</p>
 </body>
@@ -494,15 +493,15 @@ max_allowed_packet=32M</code>
             <div class="col-md-8">
                 <ul class="list-inline">
                     <li>
-                        <a href="http://localhost:4000#home">Home</a>
+                        <a href="http://webhostingdocs.github.io:4000#home">Home</a>
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
                     <li>
-                        <a href="http://localhost:4000#about">How I Can Help</a>
+                        <a href="http://webhostingdocs.github.io#about">How I Can Help</a>
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
                     <li>
-                        <a href="http://localhost:4000#services">Work Examples</a>
+                        <a href="http://webhostingdocs.github.io#services">Available Services</a>
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
                     <li>
