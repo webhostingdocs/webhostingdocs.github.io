@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Technical Writer for Web Hosting companies ">
+    <meta name="author" content="Alan Bowman">
+
+    <title>Uploading files to your website</title>
+
+    <!-- Bootstrap Core CSS -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+
+<style type="text/css">
+table, th, td { border: 1px solid grey; }
+table { border-collapse: collapse; }
+th, td { padding: 5px; text-align: left; }
+tr:nth-child(even) {background-color: #f2f2f2}
+th { background-color: #c0c0c0; color: black; }
+p { font-weight: 500;}
+    </style>
+    
+    <link href="font-awesome-4.1.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="http://webhostingdocs.github.io#home">Web Hosting Docs</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">  
+            	<li>
+                    <a class="page-scroll" href="http://webhostingdocs.github.io#about">How I Can Help</a>
+                </li>            
+                <li>
+                    <a class="page-scroll" href="http://webhostingdocs.github.io#services">Available Services</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<section id="home">
+<!-- Header -->
+	<div class="intro-header">
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-10">
+						<hr class="intro-divider">
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- /.container -->
+
+	</div>
+	<!-- /.intro-header -->
+</section>
+<br />
+
+		    <!-- About Section -->
+        <section id="about" class="container content-section <!--text-center-->">
+        <div class="row">
+            <div class="col-lg-12 col-lg-offset-0">
+  <h1 id="uploading-files-to-your-website-using-ftp-or-sftp">Uploading files to your website using FTP or SFTP</h1>
+
+  <h3 id="overview">Overview</h3>
+
+  <p>This user guide will explain how to connect to your website and upload files using FTP or SFTP.</p>
+
+  <p><strong>NOTE</strong> - if you have large files to upload (5 MB or greater), check with Technical Support to make sure that there are no file size limitations in place.</p>
+
+  <h3 id="prerequisites">Prerequisites</h3>
+
+  <p>Before uploading files to your website using either FTP or SFTP, you will need the following:</p>
+
+  <p>For FTP:</p>
+
+  <ul>
+    <li>The hostname for your website or Virtual Server (this can be a domain name or IP address)</li>
+
+    <li>Your FTP user name and password</li>
+
+    <li>FTP port number (usually port 21)</li>
+
+    <li>An FTP client (see below)</li>
+  </ul>
+
+  <p>For SFTP:</p>
+
+  <ul>
+    <li>The hostname for your website or Virtual Server (this can be a domain name or IP address)</li>
+
+    <li>Your SFTP user name and password (this may be different than the FTP user and password)</li>
+
+    <li>SFTP port number (usually port 22)</li>
+
+    <li>An SFTP client (see below)</li>
+  </ul>
+
+  <p>If you do not know your FTP/SFTP user and password, contact Technical Support. In order to use SFTP (a more secure option) you may need to have some configuration changes made to your account.</p>
+
+  <p><strong>FTP/SFTP clients</strong> - there are a large number of FTP/SFTP clients available, both free and for purchase. For this user guide, <a href="https://filezilla-project.org/index.php" title="FileZilla"><strong>FileZilla</strong></a> is used for all examples. FileZilla is free and open source, available for Windows, Mac OS X, and Linux, and can be used as an FTP or an SFTP client.</p>
+
+  <p><a href="#ftp-and-sftp-client-configuration-using-filezilla">FTP and SFTP client configuration using FileZilla</a><br>
+  &nbsp; &nbsp; <a href="#using-the-quickconnect-bar">Using the Quickconnect bar</a><br>
+  &nbsp; &nbsp; <a href="#using-the-site-manager">Using the Site Manager</a></p>
+
+  <p><a href="#additional-information">Additional Information</a></p>
+  <hr>
+
+  <h2 class="offset" id="ftp-and-sftp-client-configuration-using-filezilla">FTP and SFTP client configuration using FileZilla</h2>
+
+  <h3 class="offset" id="using-the-quickconnect-bar">Using the Quickconnect bar</h3>
+
+  <p>When you open FileZilla you should see the <strong>Quickconnect</strong> bar at the top of the application. The Quickconnect bar allows you to quickly enter in the login information for your website so you can upload files.</p>
+
+  <div class="figure">
+    <img src="quickconnect.png" title="quickconnect bar" alt="Quickconnect bar">
+
+  </div>
+  <br />
+  <ul>
+    <li><strong>Host</strong> - this is the domain name or IP address of your website (or Virtual Server)</li>
+
+    <li><strong>Username</strong> - your FTP or SFTP username (this is case sensitive)</li>
+
+    <li><strong>Password</strong> - your FTP or SFTP password</li>
+
+    <li><strong>Port</strong> - this will generally be 21 for FTP or 22 for SFTP (check with your system administrator if unsure)</li>
+  </ul>
+
+  <p>After you have entered in the correct information, click on <strong>Quickconnect</strong> - this will connect you via FTP or SFTP to your website.</p>
+
+  <p>Once you have connected, you can drag and drop files from the <strong>Local site</strong> (the left pane) to the <strong>Remote site</strong> (the right pane).</p>
+
+  <div class="figure">
+    <img src="filetransfer.png" title="File Transfer" alt="File Transfer">
+
+  </div>
+
+  <p><br></p>
+
+  <h3 class="offset" id="using-the-site-manager">Using the Site Manager</h3>
+
+  <p>If you are going to connect to the same website via FTP/SFTP on a regular basis, or you will be managing several FTP or SFTP logins, you can add each login to the <strong>Site Manager</strong>. This will allow you to save all the login information for each website instead of having to re-enter it every time.</p>
+
+  <p>To access the <strong>Site Manager</strong>, click on the Site Manager link at the top left of the FileZilla application, just above the Quickconnect bar.</p>
+
+  <div class="figure">
+    <img src="quickconnect-sitemgr.png" title="Site Manager" alt="Site Manager">
+
+  </div>
+
+  <p><br>
+  This opens the <strong>Site Manager</strong> configuration screen, on the <strong>General</strong> configuration tab.</p>
+
+  <div class="figure">
+    <img src="sitemanager.png" title="Site Manager configuration" alt="Site Manager configuration">
+
+  </div>
+  <br />
+  <ul>
+    <li><strong>Host</strong> - this is the domain name or IP address of your website (or Virtual Server)</li>
+
+    <li><strong>Port</strong> - this will generally be 21 for FTP or 22 for SFTP (check with your system administrator if unsure)</li>
+
+    <li><strong>Protocol</strong> - select <strong>FTP</strong> or <strong>SFTP</strong> from the drop down menu</li>
+
+    <li><strong>Encryption</strong> - only available for FTP, leave at the default unless you have a specific reason to change it
+    </li>
+
+    <br />
+    <li><strong>Logon Type</strong> - if you are the only person using this computer, select <strong>Normal</strong>, otherwise select <strong>Ask for password</strong></li>
+
+    <li><strong>User</strong> - your FTP or SFTP username</li>
+
+    <li><strong>Password</strong> - your FTP or SFTP password</li>
+  </ul>
+
+  <p>Once you have entered in the information, click <strong>OK</strong> to save. To give the new site a name, click on <strong>New Site</strong> under <strong>My Sites</strong>, and then click on <strong>Rename</strong>.</p>
+
+  <hr>
+
+  <h2 class="offset" id="additional-information">Additional Information</h2>
+
+  <p>For more information on how to use and configure FileZilla, see the official <a href="https://wiki.filezilla-project.org/FileZilla_Client_Tutorial_(en)" title="FileZilla Client Tutorial">FileZilla Client Tutoria</a> and the <a href="https://wiki.filezilla-project.org/Documentation" title="FileZilla Documentation">FileZilla Documentation</a>.</p>
+</body>
+<hr />
+		<section id="contact">
+	<div class="banner">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-3">
+					<h2>Contact Me:</h2>
+				</div>
+				<div class="col-lg-5">
+					<ul class="list-inline banner-social-buttons">
+						
+						<li>
+							<a href="mailto:alan@webhostingdocs.com" class="btn btn-default btn-lg"><i class="fa fa-email fa-fw"></i> <span class="network-name">email</span></a>
+						</li>
+						
+						<li>
+              <!--	<a href="https://twitter.com/webhostingdocs" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">twitter</span></a> -->
+						</li>
+						
+						<li>
+							<a href="https://github.com/webhostingdocs/webhostingdocs.github.io" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">github</span></a>
+						</li>
+						
+						<li>
+							<a href="https://linkedin.com/in/ralanbowman" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">linkedin</span></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		<!-- /.container -->
+
+	</div>
+</section>
+<!-- /.banner -->
+
+		<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="list-inline">
+                    <li>
+                        <a href="http://webhostingdocs.github.io:4000#home">Home</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="http://webhostingdocs.github.io#about">How I Can Help</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="http://webhostingdocs.github.io#services">Available Services</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted small">Copyright &copy; 2017 Alan Bowman. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+    </div>
+</footer>
+
+		<!-- jQuery Version 1.11.0 -->
+<script src="../../js/jquery-1.11.0.js"></script>
+
+<!-- Plugin JavaScript -->
+    <script src="../../js/jquery.easing.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../js/landing-page.js"></script>
+
+	</body>
+</html>
+</html>
+</html>
